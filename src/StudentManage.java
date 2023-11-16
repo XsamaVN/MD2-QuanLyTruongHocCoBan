@@ -81,7 +81,7 @@ public class StudentManage implements IntefaceManage<Student>{
     public void showAcademicAbility(){
         for (Student student: studentList) {
             if(student.getAverageScore() < 5 || student.getMathScore() < 5 || student.getPhysicsScore() < 5 || student.getChemistryScore() <5){
-                System.out.println(" Học sinh " + student.getStudentName() + " Đã Trượt");
+                System.out.println(" Học sinh { " + student.getStudentName() + " } Đã Trượt");
             }
             else {
                 System.out.println(" Học sinh { " + student.getStudentName() + " } được lên lớp");
