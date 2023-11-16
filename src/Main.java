@@ -82,7 +82,6 @@ public class Main {
                                     System.out.println(" ___________________________________");
                                     break;
                                 case "6":
-                                    System.out.println("Danh sách học sinh giỏi:");
                                     studentManage.listExcellentStudents();
                                     System.out.println(" ___________________________________");
                                     break;

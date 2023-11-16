@@ -69,7 +69,7 @@ public class StudentManage implements IntefaceManage<Student>{
         for (Student student: studentList) {
             if(student.getAverageScore() > 8.5){
                 if(student.getMathScore()>=8 && student.getChemistryScore()>=8 && student.getPhysicsScore()>=8){
-                    System.out.println( student.getStudentName()+ "Điểm trung bình: " + student.getAverageScore());
+                    System.out.println( "Tên "+ student.getStudentName()+ ", Điểm trung bình: " + student.getAverageScore());
                     check = true;
                 }
             }

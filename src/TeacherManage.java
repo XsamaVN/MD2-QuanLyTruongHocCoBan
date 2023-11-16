@@ -76,12 +76,12 @@ public class TeacherManage implements IntefaceManage<Teacher>{
 
     public boolean isInteger(String input) {
         try {
-            Integer.parseInt(input); // Cố gắng chuyển chuỗi thành số nguyên
-            return true; // Nếu thành công, chuỗi nhập vào là số nguyên
+            Integer.parseInt(input);
+            return true;
         } catch (NumberFormatException e) {
             System.out.println("Không hợp lệ vui lòng chọn lại.");
             System.out.println(" ___________________________________");
-            return false; // Nếu có lỗi NumberFormatException, chuỗi không phải là số nguyên
+            return false;
         }
     }
 }
