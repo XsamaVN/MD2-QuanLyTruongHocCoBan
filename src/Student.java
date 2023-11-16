@@ -51,7 +51,6 @@ public class Student {
                 ", mathScore=" + mathScore +
                 ", physicsScore=" + physicsScore +
                 ", chemistryScore=" + chemistryScore +
-                ", averageScore=" + averageScore +
                 '}';
     }
 }

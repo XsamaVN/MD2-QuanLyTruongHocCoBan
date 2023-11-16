@@ -83,7 +83,7 @@ public class Main {
                                     break;
                                 case "6":
                                     System.out.println("Danh sách học sinh giỏi:");
-                                    studentManage.listExcellentStudents();;
+                                    studentManage.listExcellentStudents();
                                     System.out.println(" ___________________________________");
                                     break;
                                 case "7":
