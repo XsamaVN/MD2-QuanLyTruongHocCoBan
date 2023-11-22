@@ -1,22 +1,29 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManage implements IntefaceManage<Student>{
-    List<Student> studentList = new ArrayList<>();
+    List<Student> studentList =new ArrayList<>();
+    static int studentIdIncrement = 1;
 
-    public StudentManage() {
-        studentList.add(new Student("Có", 8,9,10));
-        studentList.add(new Student("Cái", 7.5,9.5,10));
-        studentList.add(new Student("Gì", 4,9,8));
-        studentList.add(new Student("Đâu", 8,5,7.5));
-        studentList.add(new Student("Mà", 8.5,8.5,9));
-        studentList.add(new Student("Haizz", 10,10,10));
+    public StudentManage() throws IOException {
+        studentList = WriteRead.readStudent("student.csv");
+    }
 
+    public static int getStudentIdIncrement() {
+        return studentIdIncrement ++;
+    }
+
+    public static void setStudentIdIncrement(int studentIdIncrement) {
+        StudentManage.studentIdIncrement = studentIdIncrement;
     }
 
     @Override
     public void addNew(Student student) {
         studentList.add(student);
+
     }
 
     @Override
@@ -33,6 +40,14 @@ public class StudentManage implements IntefaceManage<Student>{
         } else {
             System.out.println("Không tìm thấy thông tin học sinh có id " + id + "\nVui lòng nhập lại!!!");
         }
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
     }
 
     @Override
@@ -53,10 +68,11 @@ public class StudentManage implements IntefaceManage<Student>{
     }
 
     @Override
-    public void showList() {
+    public void showList() throws IOException {
         for (Student s: studentList) {
             System.out.println(s);
         }
+
     }
     public void showAvarageScoreList(){
         for (Student student : studentList) {

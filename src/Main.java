@@ -1,14 +1,15 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         TeacherManage teacherManage = new TeacherManage();
         StudentManage studentManage = new StudentManage();
         Scanner number = new Scanner(System.in);
         Scanner word = new Scanner(System.in);
-        String choice = "1";
+        String choice = "-1";
         if (teacherManage.isInteger(choice)) {
             while (!choice.equals("0")) {
                 System.out.println(" ======= Menu quản lý Trường học ====== \n" +
@@ -32,6 +33,8 @@ public class Main {
                                     "|5. Hiện danh sách tên và điểm trung bình|\n" +
                                     "|6. Hiện danh sách học sinh giỏi.        |\n" +
                                     "|7. Hiện danh sách trạng thái học sinh   |\n" +
+                                    "|8. Xuất file danh sách học sinh.        |\n" +
+                                    "|9. Hiện file danh sách học sanh.        |\n" +
                                     "|0. Thoát.                               |\n" +
                                     "|________________________________________|");
                             System.out.print("Chọn:   ");
@@ -48,7 +51,8 @@ public class Main {
                                     System.out.println("Nhập điểm hóa: ");
                                     double chemistryScoreAdd = number.nextDouble();
                                     studentManage.addNew(new Student(studentNameAdd, mathScoreAdd, physicsScoreAdd, chemistryScoreAdd));
-                                    System.out.println("thêm thông tin giáo viên thành công!!!");
+                                    WriteRead.writeStudent("student.csv", studentManage.getStudentList());
+                                    System.out.println("thêm thông tin học sinh thành công!!!");
                                     System.out.println("_____________________________________");
                                     break;
                                 case "2":
@@ -63,12 +67,15 @@ public class Main {
                                     System.out.println("Nhập điểm hóa mới: ");
                                     double chemistryScoreEdit = number.nextDouble();
                                     studentManage.edit(studentId, new Student(studentNameEdit, mathScoreEdit, physicsScoreEdit, chemistryScoreEdit));
+                                    WriteRead.writeStudent("student.csv", studentManage.getStudentList());
                                     System.out.println(" ___________________________________");
                                     break;
                                 case "3":
+                                    studentManage.showList();
                                     System.out.println("Nhập id học sinh muốn xóa:");
                                     int studentIdDelete = number.nextInt();
                                     studentManage.delete(studentIdDelete);
+                                    WriteRead.writeStudent("student.csv", studentManage.getStudentList());
                                     System.out.println(" ___________________________________");
                                     break;
                                 case "4":
@@ -90,8 +97,14 @@ public class Main {
                                     studentManage.showAcademicAbility();
                                     System.out.println(" ___________________________________");
                                     break;
-                                default:
-                                    System.out.println("Chọn không hợp lệ vui lòng chọn lại");
+                                case "8":
+                                    WriteRead.writeStudent("student.csv", studentManage.getStudentList());
+                                    System.out.println(" ___________________________________");
+                                    break;
+                                case "9":
+                                    WriteRead.readStudent("student.csv");
+                                    System.out.println(" ___________________________________");
+                                    break;
                             }
                         }
                         break;
@@ -106,6 +119,8 @@ public class Main {
                                                "|4. Xem toàn bộ danh sách giáo viên         |\n" +
                                                "|5. Tìm giáo viên theo môn học              |\n" +
                                                "|6. Danh sách giáo viên sắp xếp theo lương  |\n" +
+                                               "|7. Xuất file danh sách giáo viên.          |\n" +
+                                               "|8. Hiện file danh sách giáo viên.          |\n" +
                                                "|0. Thoát.                                  |\n" +
                                                "|___________________________________________|");
                             System.out.print("Chọn:   ");
@@ -120,6 +135,7 @@ public class Main {
                                     System.out.println("Nhập lương: ");
                                     double teacherSalaryAdd = number.nextDouble();
                                     teacherManage.addNew(new Teacher(teacherNameAdd, teacherSubjectAdd, teacherSalaryAdd));
+                                    WriteRead.writeTeacher("teacher.csv",teacherManage.getTeacherList());
                                     System.out.println("thêm thông tin giáo viên thành công!!!");
                                     System.out.println("_____________________________________");
                                     break;
@@ -133,12 +149,15 @@ public class Main {
                                     System.out.println("Nhập lương mới: ");
                                     double teacherSalaryEdit = number.nextDouble();
                                     teacherManage.edit(teacherId, new Teacher(teacherNameEdit, teacherSubjectEdit, teacherSalaryEdit));
+                                    WriteRead.writeTeacher("teacher.csv",teacherManage.getTeacherList());
                                     System.out.println(" ___________________________________");
                                     break;
                                 case "3":
+                                    teacherManage.showList();
                                     System.out.println("Nhập id giáo viên muốn xóa:");
                                     int teacherIdDelete = number.nextInt();
                                     teacherManage.delete(teacherIdDelete);
+                                    WriteRead.writeTeacher("teacher.csv",teacherManage.getTeacherList());
                                     System.out.println(" ___________________________________");
                                     break;
                                 case "4":
@@ -157,11 +176,16 @@ public class Main {
                                     teacherManage.showListSortBySalary();
                                     System.out.println(" ___________________________________");
                                     break;
+                                case "7":
+                                    WriteRead.writeTeacher("teacher.csv",teacherManage.getTeacherList());
+                                    System.out.println(" ___________________________________");
+                                    break;
+                                case "8":
+                                    WriteRead.readTeacher("teacher.csv");
+                                    System.out.println(" ___________________________________");
+                                    break;
                                 case "0":
                                     break;
-                                default:
-                                    System.out.println("Chọn không hợp lệ vui lòng chọn lại");
-
                             }
                         }
                         break;

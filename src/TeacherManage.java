@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -7,12 +8,8 @@ public class TeacherManage implements IntefaceManage<Teacher>{
     List<Teacher> teacherList = new ArrayList<>();
 
 
-    public TeacherManage() {
-        teacherList.add(new Teacher("Hiếu", "Hóa",5000));
-        teacherList.add(new Teacher("Anh", "Toán",6000));
-        teacherList.add(new Teacher("long", "Toán",8000));
-        teacherList.add(new Teacher("Tùng", "Lý",3000));
-        teacherList.add(new Teacher("Sơn", "Lý",1000));
+    public TeacherManage() throws IOException {
+      teacherList = WriteRead.readTeacher("teacher.csv");
     }
 
     @Override
@@ -72,6 +69,14 @@ public class TeacherManage implements IntefaceManage<Teacher>{
         for (Teacher teacher: teacherListSort) {
             System.out.println(teacher);
         }
+    }
+
+    public List<Teacher> getTeacherList() {
+        return teacherList;
+    }
+
+    public void setTeacherList(List<Teacher> teacherList) {
+        this.teacherList = teacherList;
     }
 
     public boolean isInteger(String input) {

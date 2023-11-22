@@ -13,6 +13,18 @@ public class Teacher {
         teacherIdIncrement++;
     }
 
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public static int getTeacherIdIncrement() {
+        return teacherIdIncrement;
+    }
+
+    public static void setTeacherIdIncrement(int teacherIdIncrement) {
+        Teacher.teacherIdIncrement = teacherIdIncrement;
+    }
+
     public int getTeacherId() {
         return teacherId;
     }

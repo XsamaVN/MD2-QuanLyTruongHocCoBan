@@ -4,17 +4,16 @@ public class Student {
     private final double mathScore;
     private final double physicsScore;
     private final double chemistryScore;
-    static int studentIdIncrement = 1;
-    private final double averageScore;
 
+    private final double averageScore;
     public Student(String studentName, double mathScore, double physicsScore, double chemistryScore) {
-        this.studentId = studentIdIncrement;
+        this.studentId = StudentManage.getStudentIdIncrement();
         this.studentName = studentName;
         this.mathScore = mathScore;
         this.physicsScore = physicsScore;
         this.chemistryScore = chemistryScore;
         this.averageScore = (mathScore+physicsScore+chemistryScore)/3;
-        studentIdIncrement++;
+
     }
 
     public int getStudentId() {
